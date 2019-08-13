@@ -1,7 +1,9 @@
 <?php
+
 namespace Biigle\Modules\Module;
 
 use Biigle\Services\Modules;
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
 class ModuleServiceProvider extends ServiceProvider {
@@ -10,11 +12,18 @@ class ModuleServiceProvider extends ServiceProvider {
    * Bootstrap the application events.
    *
    * @param Modules $modules
+   * @param  Router  $router
    * @return  void
    */
-   public function boot(Modules $modules)
+   public function boot(Modules $modules, Router $router)
    {
       $this->loadViewsFrom(__DIR__.'/resources/views', 'module');
+      $router->group([
+            'namespace' => 'Biigle\Modules\Module\Http\Controllers',
+            'middleware' => 'web',
+        ], function ($router) {
+            require __DIR__.'/Http/routes.php';
+        });
       $modules->register('module', [
             'viewMixins' => [
                 'dashboardMain',
