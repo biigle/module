@@ -5,3 +5,8 @@ $router->get('quotes', [
    'as'   => 'quotes',
    'uses' => 'QuotesController@index',
 ]);
+
+$router->get('quotes/new', [
+   'middleware' => 'auth',
+   'uses' => 'QuotesController@quote',
+]);

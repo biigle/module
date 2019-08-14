@@ -18,12 +18,14 @@ class ModuleServiceProvider extends ServiceProvider {
    public function boot(Modules $modules, Router $router)
    {
       $this->loadViewsFrom(__DIR__.'/resources/views', 'module');
+
       $router->group([
             'namespace' => 'Biigle\Modules\Module\Http\Controllers',
             'middleware' => 'web',
         ], function ($router) {
             require __DIR__.'/Http/routes.php';
         });
+
       $modules->register('module', [
             'viewMixins' => [
                 'dashboardMain',
@@ -35,6 +37,10 @@ class ModuleServiceProvider extends ServiceProvider {
                //__DIR__.'/Http/Controllers/Api/',
             ],
         ]);
+
+        $this->publishes([
+            __DIR__.'/public/assets' => public_path('vendor/module'),
+        ], 'public');
    }
 
    /**

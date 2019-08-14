@@ -15,4 +15,14 @@ class QuotesController extends Controller {
     {
         return view('module::index');
     }
+
+    /**
+     * Returns a new inspiring quote.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function quote()
+    {
+       return \Illuminate\Foundation\Inspiring::quote();
+    }
 }
