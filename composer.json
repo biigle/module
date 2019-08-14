@@ -1,5 +1,6 @@
 {
    "name": "biigle/module",
+   "license": "GPL-3.0-only",
    "autoload": {
       "psr-4": {
          "Biigle\\Modules\\Module\\": "src"

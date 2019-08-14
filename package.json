@@ -1,6 +1,7 @@
 {
   "name": "biigle-module",
   "version": "0.0.1",
+  "license": "GPL-3.0-only",
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-helpers": "git+https://github.com/mzur/gulp-helpers.git#v1.1.0"
