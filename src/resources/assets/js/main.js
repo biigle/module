@@ -8,7 +8,7 @@ biigle.$viewModel('quotes-container', function (element) {
         methods: {
             refreshQuote: function () {
                 this.$http.get('quotes/new')
-                    .then(this.handleResponse, messages.handleErrorResponse)
+                    .then(this.handleResponse, messages.handleErrorResponse);
             },
             handleResponse: function (response) {
                 this.quote = response.body;
