@@ -5,27 +5,27 @@ namespace Biigle\Tests\Modules\Module\Http\Controllers;
 use TestCase;
 use Biigle\Tests\UserTest;
 
-class QuotesControllerTest extends TestCase {
+class QuotesControllerTest extends TestCase
+{
+    public function testRoute()
+    {
+        $user = UserTest::create();
 
-   public function testRoute()
-   {
-      $user = UserTest::create();
+        // Redirect to login page.
+        $this->get('quotes')->assertStatus(302);
 
-      // Redirect to login page.
-      $this->get('quotes')->assertStatus(302);
+        $this->be($user);
+        $this->get('quotes')->assertStatus(200);
+    }
 
-      $this->be($user);
-      $this->get('quotes')->assertStatus(200);
-   }
+    public function testQuoteProvider()
+    {
+        $user = UserTest::create();
 
-   public function testQuoteProvider()
-   {
-      $user = UserTest::create();
+        // Redirect to login page.
+        $this->get('quotes/new')->assertStatus(302);
 
-      // Redirect to login page.
-      $this->get('quotes/new')->assertStatus(302);
-
-      $this->be($user);
-      $this->get('quotes/new')->assertStatus(200);
-   }
+        $this->be($user);
+        $this->get('quotes/new')->assertStatus(200);
+    }
 }

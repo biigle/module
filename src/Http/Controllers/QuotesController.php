@@ -4,7 +4,8 @@ namespace Biigle\Modules\Module\Http\Controllers;
 
 use Biigle\Http\Controllers\Views\Controller;
 
-class QuotesController extends Controller {
+class QuotesController extends Controller
+{
 
     /**
      * Shows the quotes page.
@@ -23,6 +24,6 @@ class QuotesController extends Controller {
      */
     public function quote()
     {
-       return \Illuminate\Foundation\Inspiring::quote();
+        return \Illuminate\Foundation\Inspiring::quote();
     }
 }

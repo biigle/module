@@ -6,7 +6,8 @@ use Biigle\Services\Modules;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
-class ModuleServiceProvider extends ServiceProvider {
+class ModuleServiceProvider extends ServiceProvider
+{
 
    /**
    * Bootstrap the application events.
@@ -15,18 +16,18 @@ class ModuleServiceProvider extends ServiceProvider {
    * @param  Router  $router
    * @return  void
    */
-   public function boot(Modules $modules, Router $router)
-   {
-      $this->loadViewsFrom(__DIR__.'/resources/views', 'module');
+    public function boot(Modules $modules, Router $router)
+    {
+        $this->loadViewsFrom(__DIR__.'/resources/views', 'module');
 
-      $router->group([
+        $router->group([
             'namespace' => 'Biigle\Modules\Module\Http\Controllers',
             'middleware' => 'web',
         ], function ($router) {
             require __DIR__.'/Http/routes.php';
         });
 
-      $modules->register('module', [
+        $modules->register('module', [
             'viewMixins' => [
                 'dashboardMain',
             ],
@@ -41,15 +42,15 @@ class ModuleServiceProvider extends ServiceProvider {
         $this->publishes([
             __DIR__.'/public/assets' => public_path('vendor/module'),
         ], 'public');
-   }
+    }
 
-   /**
-   * Register the service provider.
-   *
-   * @return  void
-   */
-   public function register()
-   {
-      //
-   }
+    /**
+    * Register the service provider.
+    *
+    * @return  void
+    */
+    public function register()
+    {
+        //
+    }
 }
