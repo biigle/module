@@ -30,12 +30,7 @@ In addition to the code of the [tutorials](https://biigle.de/manual#developer-tu
 
 Note that you have to replace `biigle/module` with the actual name of your module/repository.
 
-1. Add the repository of the module to the Composer configuration of the BIIGLE core:
-
-    ```
-    composer config repositories.module vcs git@github.com:biigle/module.git
-    ```
-2. Run `composer require biigle/module --prefer-source`.
+1. Run `composer require biigle/module --prefer-source`.
 2. Add `Biigle\Modules\Module\ModuleServiceProvider::class` to the `providers` array in `config/app.php`. Replace `Module` in the class namespace with the name of your module.
 3. Run `php artisan vendor:publish --tag=public` to refresh the public assets of the modules. Do this for every update of this module.
 
