@@ -1,8 +1,11 @@
+<script>
 import {handleErrorResponse} from './import';
 
 export default {
-    data: {
-        quote: '',
+    data() {
+        return {
+            quote: '',
+        };
     },
     methods: {
         refreshQuote() {
@@ -16,3 +19,4 @@ export default {
         this.refreshQuote();
     },
 };
+</script>
