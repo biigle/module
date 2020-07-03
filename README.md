@@ -18,13 +18,14 @@ First, [create a new repository](https://github.com/biigle/module/generate) base
 6. [`ModuleServiceProvider.php#L42`](src/ModuleServiceProvider.php#L42)
 7. [`composer.json#L2`](composer.json#L2)
 
-Next, update the namespace of all PHP classes (`Biigle\Modules\Module`) and replace `Module` with the name of your module. Do this in [`gulpfile.js`](gulpfile.js#L5), too. Now you can install the module and start developing.
+Next, update the namespace of all PHP classes (`Biigle\Modules\Module`) and replace `Module` with the name of your module. Do this in [`webpack.mix.js`](webpack.mix.js#L23), too. Now you can install the module and start developing.
 
-In addition to the code of the [tutorials](https://biigle.de/manual#developer-tutorials) this repository already contains the configuration for [gulp.js](https://gulpjs.com/) as build system. To install the build system, run `npm install -g gulp-cli` and then run `npm install`. Now you can use the following build commands:
+In addition to the code of the [tutorials](https://biigle.de/manual#developer-tutorials) this repository already contains the configuration for [Laravel Mix](https://laravel.com/docs/6.x/mix) as build system. To install the build system, run and then run `npm install`. Now you can use the following commands:
 
-- `gulp`: Builds and publishes the assets once.
-- `gulp --production`: Builds, minifies and publishes the assets once. Always do this before you commit new code.
-- `gulp watch`: Continuously builds and publishes the assets whenever an asset file is changed.
+- `npm run dev`: Builds and publishes the assets once.
+- `npm run prod`: Builds, minifies and publishes the assets once. Always do this before you commit new code.
+- `npm run watch`: Continuously builds and publishes the assets whenever an asset file is changed.
+- `npm run lint`: Run static analysis to check for errors.
 
 ## How wo install this module
 
