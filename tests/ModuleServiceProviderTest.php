@@ -2,8 +2,8 @@
 
 namespace Biigle\Tests\Modules\Module;
 
-use TestCase;
 use Biigle\Modules\Module\ModuleServiceProvider;
+use TestCase;
 
 class ModuleServiceProviderTest extends TestCase
 {

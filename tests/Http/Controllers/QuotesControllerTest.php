@@ -2,8 +2,8 @@
 
 namespace Biigle\Tests\Modules\Module\Http\Controllers;
 
-use TestCase;
 use Biigle\Tests\UserTest;
+use TestCase;
 
 class QuotesControllerTest extends TestCase
 {
