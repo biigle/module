@@ -4,7 +4,7 @@ This is a template that can be used for the development of new BIIGLE modules.
 
 ## How to develop BIIGLE modules
 
-The BIIGLE manual contains [some tutorials](https://biigle.de/manual#developer-tutorials) that can get you started with BIIGLE module development. This repository implements the code that is covered in the first three tutorials.
+The BIIGLE manual contains [some tutorials](https://biigle-admin-documentation.readthedocs.io/module-development/module-development/) that can get you started with BIIGLE module development. This repository implements the code that is covered in the first three tutorials.
 
 ## How to use this template
 
