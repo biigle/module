@@ -22,7 +22,6 @@ jobs:
     - uses: actions/checkout@v1
       with:
         repository: biigle/core
-        ref: dev-modules
         fetch-depth: 1
         path: core
 
