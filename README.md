@@ -17,6 +17,7 @@ First, [create a new repository](https://github.com/biigle/module/generate) base
 5. [`ModuleServiceProvider.php#L29`](src/ModuleServiceProvider.php#L29)
 6. [`ModuleServiceProvider.php#L42`](src/ModuleServiceProvider.php#L42)
 7. [`composer.json#L2`](composer.json#L2)
+8. [`test.yml#L15`](.github/workflows/test.yml#L15)
 
 Next, update the namespace of all PHP classes (`Biigle\Modules\Module`) and replace `Module` with the name of your module. Do this in [`webpack.mix.js`](webpack.mix.js#L23), too. Now you can install the module and start developing.
 
