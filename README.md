@@ -1,4 +1,6 @@
-# Biigle Module Template
+# BIIGLE Module Template
+
+[![Test status](https://github.com/biigle/module/workflows/Tests/badge.svg)](https://github.com/biigle/module/actions?query=workflow%3ATests)
 
 This is a template that can be used for the development of new BIIGLE modules.
 
@@ -13,15 +15,15 @@ First, [create a new repository](https://github.com/biigle/module/generate) base
 1. [`QuotesController.php`](src/Http/Controllers/QuotesController.php#L16)
 2. [`index.blade.php#L13`](src/resources/views/index.blade.php#L13)
 3. [`index.blade.php#L16`](src/resources/views/index.blade.php#L16)
-4. [`ModuleServiceProvider.php#L20`](src/ModuleServiceProvider.php#L20)
-5. [`ModuleServiceProvider.php#L29`](src/ModuleServiceProvider.php#L29)
-6. [`ModuleServiceProvider.php#L42`](src/ModuleServiceProvider.php#L42)
+4. [`ModuleServiceProvider.php#L21`](src/ModuleServiceProvider.php#L21)
+5. [`ModuleServiceProvider.php#L30`](src/ModuleServiceProvider.php#L30)
+6. [`ModuleServiceProvider.php#L43`](src/ModuleServiceProvider.php#L43)
 7. [`composer.json#L2`](composer.json#L2)
 8. [`test.yml#L15`](.github/workflows/test.yml#L15)
 
-Next, update the namespace of all PHP classes (`Biigle\Modules\Module`) and replace `Module` with the name of your module. Do this in [`webpack.mix.js`](webpack.mix.js#L23), too. Now you can install the module and start developing.
+Next, update the namespace of all PHP classes (`Biigle\Modules\Module`) and replace `Module` with the name of your module. Do this in [`webpack.mix.js#L23`](webpack.mix.js#L23), too. Now you can install the module and start developing.
 
-In addition to the code of the [tutorials](https://biigle.de/manual#developer-tutorials) this repository already contains the configuration for [Laravel Mix](https://laravel.com/docs/6.x/mix) as build system. To install the build system, run and then run `npm install`. Now you can use the following commands:
+In addition to the code of the [tutorials](https://biigle.de/manual#developer-tutorials) this repository already contains the configuration for [Laravel Mix](https://laravel.com/docs/9.x/mix) as build system. To install the build system, run and then run `npm install`. Now you can use the following commands:
 
 - `npm run dev`: Builds and publishes the assets once.
 - `npm run prod`: Builds, minifies and publishes the assets once. Always do this before you commit new code.
