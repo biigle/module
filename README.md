@@ -30,7 +30,7 @@ In addition to the code of the [tutorials](https://biigle.de/manual#developer-tu
 - `npm run watch`: Continuously builds and publishes the assets whenever an asset file is changed.
 - `npm run lint`: Run static analysis to check for errors.
 
-## How wo install this module
+## How to install this module
 
 Note that you have to replace `biigle/module` with the actual name of your module/repository.
 
