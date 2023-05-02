@@ -21,7 +21,7 @@ First, [create a new repository](https://github.com/biigle/module/generate) base
 7. [`composer.json#L2`](composer.json#L2)
 8. [`test.yml#L15`](.github/workflows/test.yml#L15)
 
-Next, update the namespace of all PHP classes (`Biigle\Modules\Module`) and replace `Module` with the name of your module. Do this in [`webpack.mix.js#L23`](webpack.mix.js#L23), too. Now you can install the module and start developing.
+Next, update the namespace of all PHP classes (`Biigle\Modules\Module`) and replace `Module` with the name of your module. Do this in [`webpack.mix.js#L23`](webpack.mix.js#L23), too. Also update this readme for your new module. You should remove the first two subsections and update the installation instructions. Now you can install the module and start developing.
 
 In addition to the code of the [tutorials](https://biigle.de/manual#developer-tutorials) this repository already contains the configuration for [Laravel Mix](https://laravel.com/docs/9.x/mix) as build system. To install the build system, run and then run `npm install`. Now you can use the following commands:
 
@@ -30,11 +30,20 @@ In addition to the code of the [tutorials](https://biigle.de/manual#developer-tu
 - `npm run watch`: Continuously builds and publishes the assets whenever an asset file is changed.
 - `npm run lint`: Run static analysis to check for errors.
 
-## How to install this module
+## Installation
 
 Note that you have to replace `biigle/module` with the actual name of your module/repository.
 
-1. Run `composer require biigle/module --prefer-source`. This requires your module to be published on [Packagist](https://packagist.org/). If you don't want to publish your package, read more on [alternative options](https://getcomposer.org/doc/05-repositories.md#vcs).
-2. Add `Biigle\Modules\Module\ModuleServiceProvider::class` to the `providers` array in `config/app.php`. Replace `Module` in the class namespace with the name of your module.
+1. Run `composer require biigle/module`. *This requires your module to be published on [Packagist](https://packagist.org/). If you don't want to publish your package, read more on [alternative options](https://getcomposer.org/doc/05-repositories.md#vcs).*
+2. Add `Biigle\Modules\Module\ModuleServiceProvider::class` to the `providers` array in `config/app.php`. *Replace `Module` in the class namespace with the name of your module.*
 3. Run `php artisan vendor:publish --tag=public` to refresh the public assets of the modules. Do this for every update of this module.
 
+## Developing
+
+Take a look at the [development guide](https://github.com/biigle/core/blob/master/DEVELOPING.md) of the core repository to get started with the development setup.
+
+Want to develop a new module? Head over to the [biigle/module](https://github.com/biigle/module) template repository.
+
+## Contributions and bug reports
+
+Contributions to BIIGLE are always welcome. Check out the [contribution guide](https://github.com/biigle/core/blob/master/CONTRIBUTING.md) to get started.
