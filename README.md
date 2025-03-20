@@ -25,9 +25,8 @@ Next, update the namespace of all PHP classes (`Biigle\Modules\Module`) and repl
 
 In addition to the code of the [tutorials](https://biigle.de/manual#developer-tutorials) this repository already contains the configuration for [Laravel Mix](https://laravel.com/docs/9.x/mix) as build system. To install the build system, run and then run `npm install`. Now you can use the following commands:
 
-- `npm run dev`: Builds and publishes the assets once.
-- `npm run prod`: Builds, minifies and publishes the assets once. Always do this before you commit new code.
-- `npm run watch`: Continuously builds and publishes the assets whenever an asset file is changed.
+- `npm run dev`: Starts the development server supporting hot module replacement.
+- `npm run build`: Builds, minifies and publishes the assets once. Always do this before you commit new code.
 - `npm run lint`: Run static analysis to check for errors.
 
 ## Installation
