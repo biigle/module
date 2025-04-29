@@ -1,5 +1,5 @@
 <script>
-import {handleErrorResponse} from './import';
+import {handleErrorResponse} from './import.js';
 
 export default {
     data() {
@@ -9,10 +9,13 @@ export default {
     },
     methods: {
         refreshQuote() {
-            this.$http.get('quotes/new').then(this.handleResponse, handleErrorResponse);
+            fetch('quotes/new')
+                .then((r) => r.text())
+                .then(this.handleResponse)
+                .catch(handleErrorResponse);
         },
-        handleResponse(response) {
-            this.quote = response.body;
+        handleResponse(text) {
+            this.quote = text;
         },
     },
     created() {
