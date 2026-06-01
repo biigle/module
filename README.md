@@ -13,11 +13,10 @@ The BIIGLE manual contains [some tutorials](https://biigle-admin-documentation.r
 First, [create a new repository](https://github.com/biigle/module/generate) (either private or public) based on this template.
 
 ## Development & Development Installation
-
-The name of this module needs to be updated in several locations. For your convenience, we provide a python script to automate this process.
+Clone the module to a local directory. The name of this module needs to be updated in several locations. For your convenience, we provide a python script to automate this process.
 Run `python changeModuleName.py` to update all locations at once. The module name is the name you gave to the module when you created the repository, i.e. the name of the parent folder of this file.
 
-If your module is not (yet) published on Packagist, you need to add the following to biigle's composer.json (found in the biigle root directory):
+If your module is not (yet) published on Packagist, you need to add the following to biigle's composer.json (found in the biigle root directory; if repositories already exist, add the new one to the list):
 
 ```
     "repositories": [
@@ -28,7 +27,7 @@ If your module is not (yet) published on Packagist, you need to add the followin
     ]
 ```
 
-and run `composer require biigle/<your_module_name>:dev-main --ignore-platform-req=ext-ffi` in the biigle root directory to install the module to biigle. Next add `Biigle\Modules\<your_module_name>\<your_module_name>ServiceProvider::class`, to the `providers` array below `// Insert Biigle module service providers here.` in `config/app.php`. Still in the biigle root directory run `php artisan vendor:publish --tag=public`.
+If the repository is private you need to have ssh-keys configured for your GitHub account. Run `composer require biigle/<your_module_name>:dev-main --ignore-platform-req=ext-ffi` in the biigle root directory to install the module to biigle. Next in `config/app.php` add `Biigle\Modules\<your_module_name>\<your_module_name>ServiceProvider::class`, to the `providers` array below `// Insert Biigle module service providers here.`. Still in the biigle root directory run `php artisan vendor:publish --tag=public`.
 
 The module is now installed to `biigle/vendor/biigle/<your_module_name>`. You can go there and develop your module. 
 
