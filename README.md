@@ -27,7 +27,7 @@ If your module is not (yet) published on Packagist, you need to add the followin
     ]
 ```
 
-If the repository is private you need to have ssh-keys configured for your GitHub account. Run `composer require biigle/<your_module_name>:dev-main --ignore-platform-req=ext-ffi` in the biigle root directory to install the module to biigle. Next in `config/app.php` add `Biigle\Modules\<your_module_name>\<your_module_name>ServiceProvider::class`, to the `providers` array below `// Insert Biigle module service providers here.`. Still in the biigle root directory run `php artisan vendor:publish --tag=public`.
+If the repository is private you need to have ssh-keys configured for your GitHub account. Run `composer require biigle/<your_module_name>:dev-main --ignore-platform-req=ext-ffi` in the biigle root directory to install the module to biigle. Next in `config/app.php` add `Biigle\Modules\<your_module_name>\<Your_module_name>ServiceProvider::class` (Please note: The ServiceProvider class is capitalized.), to the `providers` array below `// Insert Biigle module service providers here.`. Still in the biigle root directory run `php artisan vendor:publish --tag=public`.
 
 The module is now installed to `biigle/vendor/biigle/<your_module_name>`. You can go there and develop your module. 
 

@@ -54,7 +54,7 @@ def replace_text_in_php_files(root: Path, old: str, new: str) -> set[Path]:
 
 def rename_service_provider_file(root: Path, module: str) -> tuple[Path, set[Path]]:
     old_path = root / "src/ModuleServiceProvider.php"
-    new_path = root / f"src/{module}ServiceProvider.php"
+    new_path = root / f"src/{module.capitalize()}ServiceProvider.php"
     changed_files: set[Path] = set()
 
     if old_path.exists() and new_path.exists():
@@ -100,7 +100,7 @@ def main() -> None:
     root = Path(__file__).resolve().parent
     module = root.name
     module_lower = module.lower()
-    provider_class = f"{module}ServiceProvider"
+    provider_class = f"{module.capitalize()}ServiceProvider"
     service_provider_path, renamed_files = rename_service_provider_file(root, module)
     renamed_files.update(rename_service_provider_test_file(root, module))
 
