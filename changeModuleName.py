@@ -148,6 +148,12 @@ def main() -> None:
             1,
         ),
         (
+            root / "composer.json",
+            '"Biigle\\\\Modules\\\\Module\\\\ModuleServiceProvider"',
+            f'"Biigle\\\\Modules\\\\{module}\\\\{provider_class}"',
+            1,
+        ),
+        (
             root / ".github/workflows/test.yml",
             "MODULE_NAME: Module",
             f"MODULE_NAME: {module}",

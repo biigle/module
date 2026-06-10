@@ -13,10 +13,12 @@ The BIIGLE manual contains [some tutorials](https://biigle-admin-documentation.r
 First, [create a new repository](https://github.com/biigle/module/generate) (either private or public) based on this template.
 
 ## Development & Development Installation
-Clone the module to a local directory. The name of this module needs to be updated in several locations. For your convenience, we provide a python script to automate this process.
+
+Clone the module to a local directory. The name of this module needs to be updated in several locations. For your convenience, we provide a Python script to automate this process.
+
 Run `python changeModuleName.py` to update all locations at once. The module name is the name you gave to the module when you created the repository, i.e. the name of the parent folder of this file.
 
-If your module is not (yet) published on Packagist, you need to add the following to biigle's composer.json (found in the biigle root directory; if repositories already exist, add the new one to the list):
+If your module is not (yet) published on Packagist, you need to add the following to biigle's composer.json (found in the BIIGLE root directory; if repositories already exist, add the new one to the list):
 
 ```
     "repositories": [
@@ -27,22 +29,22 @@ If your module is not (yet) published on Packagist, you need to add the followin
     ]
 ```
 
-If the repository is private you need to have ssh-keys configured for your GitHub account. Run `composer require biigle/<your_module_name>:dev-main --ignore-platform-req=ext-ffi` in the biigle root directory to install the module to biigle. Next in `config/app.php` add `Biigle\Modules\<your_module_name>\<Your_module_name>ServiceProvider::class` (Please note: The ServiceProvider class is capitalized.), to the `providers` array below `// Insert Biigle module service providers here.`. Still in the biigle root directory run `php artisan vendor:publish --tag=public`.
+If the repository is private you need to have ssh-keys configured for your GitHub account. Run `composer require <github_username>/<your_module_name>:dev-main --ignore-platform-req=ext-ffi` in the BIIGLE root directory to install the module to BIIGLE. Still in the BIIGLE root directory run `php artisan vendor:publish --tag=public`.
 
-The module is now installed to `biigle/vendor/biigle/<your_module_name>`. You can go there and develop your module. 
+The module is now installed to `biigle/vendor/<github_username>/<your_module_name>`. You can go there and develop your module. 
 
+- `npm run dev`: Continuously builds the assets during development.
 - `npm run build`: Builds, minifies and publishes the assets once.
 - `npm run lint`: Run static analysis to check for errors.
 
-Also update this readme for your new module. You should remove the first three subsections and update the installation instructions. And don't forget to change the author and github adress in `composer.json` as well.
+Also update this readme for your new module. You should remove the first three subsections and update the installation instructions. And don't forget to change the author and GitHub address in `composer.json` as well.
 
 ## Installation
 
 Note that you have to replace `biigle/module` with the actual name of your module/repository.
 
 1. Run `composer require biigle/module`. *This requires your module to be published on [Packagist](https://packagist.org/). If you don't want to publish your package, read more on [alternative options](https://getcomposer.org/doc/05-repositories.md#vcs).*
-2. Add `Biigle\Modules\Module\ModuleServiceProvider::class` to the `providers` array in `config/app.php`. *Replace `Module` in the class namespace with the name of your module.*
-3. Run `php artisan vendor:publish --tag=public` to refresh the public assets of the modules. Do this for every update of this module.
+2. Run `php artisan vendor:publish --tag=public` to refresh the public assets of the modules. Do this for every update of this module.
 
 ## Developing
 
