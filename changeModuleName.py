@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import argparse
 from pathlib import Path
 
 
@@ -97,8 +98,12 @@ def rename_service_provider_test_file(root: Path, module: str) -> set[Path]:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Update the module name in all relevant files.")
+    parser.add_argument("name", help="Module name")
+    args = parser.parse_args()
+
     root = Path(__file__).resolve().parent
-    module = root.name
+    module = args.name
     module_lower = module.lower()
     provider_class = f"{module.capitalize()}ServiceProvider"
     service_provider_path, renamed_files = rename_service_provider_file(root, module)
