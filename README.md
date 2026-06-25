@@ -10,32 +10,41 @@ The BIIGLE manual contains [some tutorials](https://biigle-admin-documentation.r
 
 ## How to use this template
 
-First, [create a new repository](https://github.com/biigle/module/generate) based on this template. Then update the name of this module from `biigle/module` to whatever name you want to use for your module. The name has to be updated at the following locations:
+First, [create a new repository](https://github.com/biigle/module/generate) (either private or public) based on this template.
 
-1. [`QuotesController.php`](src/Http/Controllers/QuotesController.php#L16)
-2. [`index.blade.php#L13`](src/resources/views/index.blade.php#L13)
-3. [`index.blade.php#L16`](src/resources/views/index.blade.php#L16)
-4. [`ModuleServiceProvider.php#L21`](src/ModuleServiceProvider.php#L21)
-5. [`ModuleServiceProvider.php#L30`](src/ModuleServiceProvider.php#L30)
-6. [`ModuleServiceProvider.php#L43`](src/ModuleServiceProvider.php#L43)
-7. [`composer.json#L2`](composer.json#L2)
-8. [`test.yml#L15`](.github/workflows/test.yml#L15)
+## Development & Development Installation
 
-Next, update the namespace of all PHP classes (`Biigle\Modules\Module`) and replace `Module` with the name of your module. Do this in [`webpack.mix.js#L23`](webpack.mix.js#L23), too. Also update this readme for your new module. You should remove the first two subsections and update the installation instructions. Now you can install the module and start developing.
+Clone the module to a local directory. The name of this module needs to be updated in several locations. For your convenience, we provide a Python script to automate this process.
 
-In addition to the code of the [tutorials](https://biigle.de/manual#developer-tutorials) this repository already contains the configuration for [Laravel Mix](https://laravel.com/docs/9.x/mix) as build system. To install the build system, run and then run `npm install`. Now you can use the following commands:
+Run `python changeModuleName.py <your_module_name>` to update all locations at once.
 
-- `npm run dev`: Starts the development server supporting hot module replacement.
-- `npm run build`: Builds, minifies and publishes the assets once. Always do this before you commit new code.
+If your module is not (yet) published on Packagist, you need to add the following to biigle's composer.json (found in the BIIGLE root directory; if repositories already exist, add the new one to the list):
+
+```
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:<github_username>/<your_module_name>"
+        }
+    ]
+```
+
+If the repository is private you need to have ssh-keys configured for your GitHub account. Run `composer require <github_username>/<your_module_name>:dev-main --ignore-platform-req=ext-ffi` in the BIIGLE root directory to install the module to BIIGLE. Still in the BIIGLE root directory run `php artisan vendor:publish --tag=public`.
+
+The module is now installed to `biigle/vendor/<github_username>/<your_module_name>`. You can go there and develop your module. 
+
+- `npm run dev`: Continuously builds the assets during development.
+- `npm run build`: Builds, minifies and publishes the assets once.
 - `npm run lint`: Run static analysis to check for errors.
+
+Also update this readme for your new module. You should remove the first three subsections and update the installation instructions. And don't forget to change the author and GitHub address in `composer.json` as well.
 
 ## Installation
 
 Note that you have to replace `biigle/module` with the actual name of your module/repository.
 
 1. Run `composer require biigle/module`. *This requires your module to be published on [Packagist](https://packagist.org/). If you don't want to publish your package, read more on [alternative options](https://getcomposer.org/doc/05-repositories.md#vcs).*
-2. Add `Biigle\Modules\Module\ModuleServiceProvider::class` to the `providers` array in `config/app.php`. *Replace `Module` in the class namespace with the name of your module.*
-3. Run `php artisan vendor:publish --tag=public` to refresh the public assets of the modules. Do this for every update of this module.
+2. Run `php artisan vendor:publish --tag=public` to refresh the public assets of the modules. Do this for every update of this module.
 
 ## Developing
 
