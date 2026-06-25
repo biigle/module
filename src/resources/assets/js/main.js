@@ -1,3 +1,3 @@
-import Quotes from './quotes.vue';
+import RandomQuotes from './random-quotes.vue';
 
-biigle.$mount('quotes-container', Quotes);
+biigle.$mount('quotes-container', RandomQuotes);
