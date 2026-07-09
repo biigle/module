@@ -18,5 +18,12 @@
       "psr-4": {
          "Biigle\\Modules\\Module\\": "src"
       }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Biigle\\Modules\\Module\\ModuleServiceProvider"
+            ]
+        }
     }
 }
