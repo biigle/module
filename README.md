@@ -14,9 +14,9 @@ First, [create a new repository](https://github.com/biigle/module/generate) (eit
 
 ## Development & Development Installation
 
-Clone the module to a local directory. The name of this module needs to be updated in several locations. For your convenience, we provide a Python script to automate this process.
+Clone the module to a local directory. The name of this module needs to be updated in several locations. For your convenience, we provide a PHP script to automate this process.
 
-Run `python changeModuleName.py <your_module_name>` to update all locations at once.
+Run `php setup.php <your_module_name>` to update all locations at once.
 
 If your module is not (yet) published on Packagist, you need to add the following to biigle's composer.json (found in the BIIGLE root directory; if repositories already exist, add the new one to the list):
 
