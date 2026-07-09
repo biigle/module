@@ -16,7 +16,7 @@ First, [create a new repository](https://github.com/biigle/module/generate) (eit
 
 Clone the module to a local directory. The name of this module needs to be updated in several locations. For your convenience, we provide a PHP script to automate this process.
 
-Run `php setup.php <your_module_name>` to update all locations at once.
+Run `php setup.php YourModuleName` to update all locations at once.
 
 If your module is not (yet) published on Packagist, you need to add the following to biigle's composer.json (found in the BIIGLE root directory; if repositories already exist, add the new one to the list):
 
@@ -29,9 +29,9 @@ If your module is not (yet) published on Packagist, you need to add the followin
     ]
 ```
 
-If the repository is private you need to have ssh-keys configured for your GitHub account. Run `composer require <github_username>/<your_module_name>:dev-main --ignore-platform-req=ext-ffi` in the BIIGLE root directory to install the module to BIIGLE. Still in the BIIGLE root directory run `php artisan vendor:publish --tag=public`.
+If the repository is private you need to have ssh-keys configured for your GitHub account. Run `composer require <github_username>/<your_module_name>:dev-main --ignore-platform-reqs` in the BIIGLE root directory to install the module to BIIGLE. Still in the BIIGLE root directory run `php artisan vendor:publish --tag=public`.
 
-The module is now installed to `biigle/vendor/<github_username>/<your_module_name>`. You can go there and develop your module. 
+The module is now installed to `biigle/vendor/biigle/<yourmodulename>`. You can go there and develop your module.
 
 - `npm run dev`: Continuously builds the assets during development.
 - `npm run build`: Builds, minifies and publishes the assets once.

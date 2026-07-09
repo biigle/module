@@ -4,6 +4,8 @@
  * Update the module name in all relevant files.
  */
 
+const PHP_DIRECTORIES = ['src', 'tests'];
+
 function replaceText(string $path, string $old, string $new, int $expectedCount = 1): bool
 {
     $content = file_get_contents($path);
@@ -32,14 +34,22 @@ function replaceText(string $path, string $old, string $new, int $expectedCount 
  */
 function phpFiles(string $root): array
 {
-    $iterator = new RecursiveIteratorIterator(
-        new RecursiveDirectoryIterator($root, FilesystemIterator::SKIP_DOTS)
-    );
-
     $files = [];
-    foreach ($iterator as $file) {
-        if ($file->isFile() && $file->getExtension() === 'php') {
-            $files[] = $file->getPathname();
+
+    foreach (PHP_DIRECTORIES as $directory) {
+        $path = "{$root}/{$directory}";
+        if (!is_dir($path)) {
+            continue;
+        }
+
+        $iterator = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS)
+        );
+
+        foreach ($iterator as $file) {
+            if ($file->isFile() && $file->getExtension() === 'php') {
+                $files[] = $file->getPathname();
+            }
         }
     }
 
@@ -164,31 +174,31 @@ $replacements = [
     [
         "{$root}/src/Http/Controllers/QuotesController.php",
         "view('module::index')",
-        "view('{$module}::index')",
+        "view('{$moduleLower}::index')",
         1,
     ],
     [
         "{$root}/src/resources/views/index.blade.php",
         'vendor/biigle/module/hot',
-        "vendor/biigle/{$module}/hot",
+        "vendor/biigle/{$moduleLower}/hot",
         2,
     ],
     [
         $serviceProviderPath,
         "loadViewsFrom(__DIR__.'/resources/views', 'module');",
-        "loadViewsFrom(__DIR__.'/resources/views', '{$module}');",
+        "loadViewsFrom(__DIR__.'/resources/views', '{$moduleLower}');",
         1,
     ],
     [
         $serviceProviderPath,
         "\$modules->register('module', [",
-        "\$modules->register('{$module}', [",
+        "\$modules->register('{$moduleLower}', [",
         1,
     ],
     [
         $serviceProviderPath,
         "public_path('vendor/module')",
-        "public_path('vendor/{$module}')",
+        "public_path('vendor/{$moduleLower}')",
         1,
     ],
     [
@@ -207,6 +217,12 @@ $replacements = [
         "{$root}/composer.json",
         '"Biigle\\\\Modules\\\\Module\\\\ModuleServiceProvider"',
         "\"Biigle\\\\Modules\\\\{$module}\\\\{$providerClass}\"",
+        1,
+    ],
+    [
+        "{$root}/package.json",
+        'Module\\\\\\\\ModuleServiceProvider',
+        "{$module}\\\\\\\\{$providerClass}",
         1,
     ],
     [
@@ -229,9 +245,6 @@ $changedFiles = array_merge(
     $changedFiles,
     replaceTextInPhpFiles($root, 'ModuleServiceProvider', $providerClass)
 );
-if (replaceText("{$root}/package.json", 'ModuleServiceProvider', $providerClass, 1)) {
-    $changedFiles[] = "{$root}/package.json";
-}
 
 $changedFiles = array_unique($changedFiles);
 
